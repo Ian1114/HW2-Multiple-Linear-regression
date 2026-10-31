@@ -41,7 +41,7 @@ Copy-Item .env.example .env
 .\.venv\Scripts\python.exe -m webapp.server
 ```
 
-開啟 `http://127.0.0.1:8000`。按 Ctrl+C 停止服務。後端讀取 `outputs/life_expectancy_model.joblib` 進行預測，需保留原始資料集、分析輸出與 PDF 報告。環境變數 `PORT` 可供部署平台指定埠號；公開部署時應依平台設定 `HW2_HOST=0.0.0.0`。此版本已支援本機執行，尚未設定網路部署服務或正式公開網址。
+開啟 `http://127.0.0.1:8000`。按 Ctrl+C 停止服務。後端讀取 `outputs/life_expectancy_model.joblib` 進行預測，需保留原始資料集、分析輸出與 PDF 報告。環境變數 `PORT` 可供部署平台指定埠號；公開部署時應依平台設定 `HW2_HOST=0.0.0.0`。Python 服務用於本機執行；公開靜態版位於 https://ian1114.github.io/HW2-Multiple-Linear-regression/ 。
 
 ## 三個資料集分頁
 
