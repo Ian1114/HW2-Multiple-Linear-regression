@@ -1,0 +1,34 @@
+{
+  "kbest": [
+    "Status",
+    "Adult Mortality",
+    "Alcohol",
+    "percentage expenditure",
+    "Hepatitis B",
+    "BMI",
+    "Polio",
+    "Diphtheria",
+    "HIV/AIDS",
+    "GDP",
+    "thinness  1-19 years",
+    "thinness 5-9 years",
+    "Income composition of resources",
+    "Schooling"
+  ],
+  "rfe": [
+    "Status",
+    "Adult Mortality",
+    "infant deaths",
+    "Alcohol",
+    "Hepatitis B",
+    "BMI",
+    "under-five deaths",
+    "Polio",
+    "Diphtheria",
+    "HIV/AIDS",
+    "GDP",
+    "thinness  1-19 years",
+    "Income composition of resources",
+    "Schooling"
+  ]
+}

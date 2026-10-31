@@ -1,0 +1,1 @@
+const {predictStatic}=require('./static/static_predict.js');let data='';process.stdin.setEncoding('utf8');process.stdin.on('data',x=>data+=x);process.stdin.on('end',()=>{const d=JSON.parse(data);process.stdout.write(String(predictStatic(d.model,d.record)))});

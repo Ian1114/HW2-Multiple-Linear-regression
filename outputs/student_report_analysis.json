@@ -1,0 +1,235 @@
+{
+  "dataset": "student",
+  "target": "G3",
+  "features": [
+    "sex",
+    "age",
+    "address",
+    "Medu",
+    "Fedu",
+    "traveltime",
+    "studytime",
+    "failures",
+    "schoolsup",
+    "famsup",
+    "paid",
+    "activities",
+    "higher",
+    "internet",
+    "famrel",
+    "goout",
+    "health",
+    "absences",
+    "G1",
+    "G2"
+  ],
+  "categories": {
+    "sex": [
+      "F",
+      "M"
+    ],
+    "address": [
+      "R",
+      "U"
+    ],
+    "schoolsup": [
+      "no",
+      "yes"
+    ],
+    "famsup": [
+      "no",
+      "yes"
+    ],
+    "paid": [
+      "no",
+      "yes"
+    ],
+    "activities": [
+      "no",
+      "yes"
+    ],
+    "higher": [
+      "no",
+      "yes"
+    ],
+    "internet": [
+      "no",
+      "yes"
+    ],
+    "Medu": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "Fedu": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "traveltime": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "studytime": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "failures": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "famrel": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "goout": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "health": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "G1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20
+    ],
+    "G2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20
+    ]
+  },
+  "rows": 649,
+  "train_rows": 519,
+  "test_rows": 130,
+  "rmse": 1.1550016636312415,
+  "mae": 0.7257697960375533,
+  "r2": 0.8632006052853887,
+  "cv_rmse": 1.2997749163153736,
+  "cv_std": 0.26834687284841807,
+  "sha256": "5be7b02f13f5800fddd66e2c8d834cd00ece14c552fb404def2397b31b63236b",
+  "example": {
+    "sex": "F",
+    "age": 18,
+    "address": "U",
+    "Medu": 4,
+    "Fedu": 4,
+    "traveltime": 2,
+    "studytime": 2,
+    "failures": 0,
+    "schoolsup": "yes",
+    "famsup": "no",
+    "paid": "no",
+    "activities": "no",
+    "higher": "yes",
+    "internet": "no",
+    "famrel": 4,
+    "goout": 4,
+    "health": 3,
+    "absences": 4,
+    "G1": 0,
+    "G2": 11
+  },
+  "raw_rows": 649,
+  "raw_columns": 33,
+  "missing_total": 0,
+  "missing_target": 0,
+  "duplicates": 0,
+  "bp_lm": 38.998927011726636,
+  "bp_p": 0.006669435118931655,
+  "max_vif": 4.068599869862853,
+  "max_vif_feature": "G1",
+  "selection": {
+    "KBest 14": [
+      "age",
+      "Medu",
+      "Fedu",
+      "traveltime",
+      "studytime",
+      "failures",
+      "goout",
+      "health",
+      "G1",
+      "G2",
+      "sex_M",
+      "address_U",
+      "higher_yes",
+      "internet_yes"
+    ],
+    "RFE 14": [
+      "Medu",
+      "traveltime",
+      "studytime",
+      "failures",
+      "famrel",
+      "absences",
+      "G1",
+      "G2",
+      "sex_M",
+      "address_U",
+      "schoolsup_yes",
+      "famsup_yes",
+      "paid_yes",
+      "internet_yes"
+    ]
+  },
+  "design_rank": 21,
+  "design_columns": 21
+}

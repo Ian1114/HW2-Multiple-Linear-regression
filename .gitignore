@@ -1,0 +1,17 @@
+.venv/
+.env
+__pycache__/
+.pytest_cache/
+.ipynb_checkpoints/
+outputs/
+
+# Local-only and generated files
+publish_repo/
+site/
+dataset/
+data/raw/
+.source-images/
+reports/qa/
+reports/preview-*.png
+reports/final-*.png
+reports/identity-check-*.png

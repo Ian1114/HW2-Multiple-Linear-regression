@@ -1,0 +1,71 @@
+{
+  "dataset": "paris",
+  "target": "price",
+  "features": [
+    "squareMeters",
+    "numberOfRooms",
+    "hasYard",
+    "hasPool",
+    "floors",
+    "cityCode",
+    "cityPartRange",
+    "numPrevOwners",
+    "made",
+    "isNewBuilt",
+    "hasStormProtector",
+    "basement",
+    "attic",
+    "garage",
+    "hasStorageRoom",
+    "hasGuestRoom"
+  ],
+  "categories": {
+    "hasYard": [
+      0,
+      1
+    ],
+    "hasPool": [
+      0,
+      1
+    ],
+    "isNewBuilt": [
+      0,
+      1
+    ],
+    "hasStormProtector": [
+      0,
+      1
+    ],
+    "hasStorageRoom": [
+      0,
+      1
+    ]
+  },
+  "rows": 10000,
+  "train_rows": 8000,
+  "test_rows": 2000,
+  "rmse": 1922.4225447644653,
+  "mae": 1510.0341808542473,
+  "r2": 0.9999995780555567,
+  "cv_rmse": 1896.5966301820001,
+  "cv_std": 21.845888928345722,
+  "sha256": "83b315e6e644f710335f5871490db265a4a1f563842b6320d047e0d09db86bf4",
+  "example": {
+    "squareMeters": 75523,
+    "numberOfRooms": 3,
+    "hasYard": 0,
+    "hasPool": 1,
+    "floors": 63,
+    "cityCode": 9373,
+    "cityPartRange": 3,
+    "numPrevOwners": 8,
+    "made": 2005,
+    "isNewBuilt": 0,
+    "hasStormProtector": 1,
+    "basement": 4313,
+    "attic": 9005,
+    "garage": 956,
+    "hasStorageRoom": 0,
+    "hasGuestRoom": 7
+  }
+}
