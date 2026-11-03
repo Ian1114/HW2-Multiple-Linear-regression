@@ -27,9 +27,11 @@ def export_models():
 
 def build():
     dest=ROOT/'site';(dest/'reports').mkdir(parents=True,exist_ok=True)
-    for name in ['style.css','app.js','static_predict.js']:
+    for name in ['style.css','app.js','custom.js','custom_worker.js','static_predict.js']:
         shutil.copy2(ROOT/'webapp/static'/name,dest/name)
-    html=(ROOT/'webapp/static/index.html').read_text(encoding='utf8').replace('href="/style.css"','href="style.css"').replace('src="/app.js"','src="app.js"').replace('src="/chart.png"','src="chart.png"').replace('href="/report.pdf"','href="report.pdf"')
+    shutil.copy2(ROOT/'webapp/custom_dataset.py',dest/'custom_dataset.py')
+    html=(ROOT/'webapp/static/index.html').read_text(encoding='utf8').replace('href="/style.css"','href="style.css"').replace('src="/app.js"','src="app.js"').replace('src="/custom.js"','src="custom.js"').replace('src="/chart.png"','src="chart.png"').replace('href="/report.pdf"','href="report.pdf"')
+    html=html.replace('資料僅傳送至目前網站的後端處理，不寫入檔案。','資料在瀏覽器內處理，不上傳至伺服器；首次使用需下載分析套件。')
     html=html.replace('後端將使用已訓練模型計算','瀏覽器將使用已訓練模型計算').replace('<script defer src="app.js"></script>','<script defer src="models.js"></script><script defer src="static_predict.js"></script><script defer src="static_api.js"></script><script defer src="app.js"></script>')
     (dest/'index.html').write_text(html,encoding='utf8')
     js=(dest/'app.js').read_text(encoding='utf8').replace("'/report.pdf'","'report.pdf'").replace("'/reports/paris.pdf'","'reports/paris.pdf'").replace("'/reports/student.pdf'","'reports/student.pdf'")

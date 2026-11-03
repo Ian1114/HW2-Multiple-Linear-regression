@@ -23,3 +23,13 @@ def test_static_predictions_match_python():
         assert float(result.stdout)==pytest.approx(expected,rel=1e-10,abs=1e-7)
 import pytest
 
+def test_pages_build_contains_custom_analysis_assets():
+    from webapp.build_pages import build, ROOT
+    build()
+    site = ROOT / 'site'
+    html = (site / 'index.html').read_text(encoding='utf8')
+    assert 'src="custom.js"' in html
+    assert (site / 'custom.js').is_file()
+    assert (site / 'custom_worker.js').is_file()
+    assert (site / 'custom_dataset.py').read_text(encoding='utf8') == (ROOT / 'webapp/custom_dataset.py').read_text(encoding='utf8')
+

@@ -10,6 +10,7 @@ from dotenv import load_dotenv
 from joblib import load
 from hw2lib.predict import prepare_features
 from webapp.datasets import dataset_info, predict_dataset
+from webapp.custom_dataset import inspect_csv, train_csv
 
 ROOT = Path(__file__).resolve().parent.parent
 load_dotenv(ROOT / '.env', override=False)
@@ -64,7 +65,7 @@ class Handler(BaseHTTPRequestHandler):
             try: self.send_json(example_record())
             except Exception: self.send_json({'error':'無法讀取範例資料或模型'}, 500)
             return
-        files = {'/':(STATIC/'index.html','text/html; charset=utf-8'), '/style.css':(STATIC/'style.css','text/css; charset=utf-8'), '/app.js':(STATIC/'app.js','text/javascript; charset=utf-8'), '/chart.png':(ROOT/'outputs/holdout_diagnostics.png','image/png'), '/intervals.png':(ROOT/'outputs/intervals.png','image/png'), '/report.pdf':(ROOT/'reports/life_expectancy_report.pdf','application/pdf'), '/reports/paris.pdf':(ROOT/'reports/paris_report.pdf','application/pdf'), '/reports/student.pdf':(ROOT/'reports/student_report.pdf','application/pdf')}
+        files = {'/':(STATIC/'index.html','text/html; charset=utf-8'), '/style.css':(STATIC/'style.css','text/css; charset=utf-8'), '/app.js':(STATIC/'app.js','text/javascript; charset=utf-8'), '/custom.js':(STATIC/'custom.js','text/javascript; charset=utf-8'), '/chart.png':(ROOT/'outputs/holdout_diagnostics.png','image/png'), '/intervals.png':(ROOT/'outputs/intervals.png','image/png'), '/report.pdf':(ROOT/'reports/life_expectancy_report.pdf','application/pdf'), '/reports/paris.pdf':(ROOT/'reports/paris_report.pdf','application/pdf'), '/reports/student.pdf':(ROOT/'reports/student_report.pdf','application/pdf')}
         if path not in files: self.send_error(404); return
         file, typ = files[path]
         try: body=file.read_bytes()
@@ -73,12 +74,15 @@ class Handler(BaseHTTPRequestHandler):
 
     def do_POST(self):
         path=urlsplit(self.path).path
-        if path not in ('/api/predict','/api/predict/paris','/api/predict/student'): self.send_error(404); return
+        if path not in ('/api/predict','/api/predict/paris','/api/predict/student','/api/custom/inspect','/api/custom/train'): self.send_error(404); return
         try:
             size=int(self.headers.get('Content-Length','0'))
-            if size <= 0 or size > 32768: raise ValueError('請求大小不正確')
+            if size <= 0 or size > (11 * 1024 * 1024 if path.startswith('/api/custom/') else 32768): raise ValueError('請求大小不正確')
             data=json.loads(self.rfile.read(size))
-            self.send_json(predict_record(data) if path == '/api/predict' else predict_dataset(path.rsplit('/',1)[-1],data))
+            if path == '/api/custom/inspect': result = inspect_csv(data.get('csv'))
+            elif path == '/api/custom/train': result = train_csv(data.get('csv'), data.get('target'), data.get('features'))
+            else: result = predict_record(data) if path == '/api/predict' else predict_dataset(path.rsplit('/',1)[-1],data)
+            self.send_json(result)
         except (ValueError, TypeError, json.JSONDecodeError) as exc: self.send_json({'error':str(exc)},400)
         except Exception: self.send_json({'error':'模型目前無法使用'},500)
 

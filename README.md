@@ -65,6 +65,8 @@ Copy-Item .env.example .env
 
 網站靜態發布目錄是 `docs/`。GitHub Pages 為靜態網站，因此線上版以匯出的模型係數在瀏覽器內計算；本機版維持 Python 伺服器。更新模型或頁面後執行：
 
+下拉選單提供「自訂資料集」：選擇 UTF-8 CSV、目標與輸入特徵後，可分析資料並移除已選檔案。本機版以 Python 後端運算；GitHub Pages 版在瀏覽器以 Pyodide 載入相同的分析程式執行，CSV 不傳送至伺服器。線上版第一次使用需要網路下載 Python 與分析套件，可能須等待一段時間。CSV 限 8 MB、100,000 列和 200 欄，目標須為連續數值、至少有 20 筆有效資料。不同資料集仍需自行檢查識別碼、資料洩漏和適當的切分方式。
+
 ```powershell
 .\.venv\Scripts\python.exe -m webapp.build_pages
 Copy-Item -Recurse -Force site/* docs/
