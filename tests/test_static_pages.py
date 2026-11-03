@@ -28,7 +28,8 @@ def test_pages_build_contains_custom_analysis_assets():
     build()
     site = ROOT / 'site'
     html = (site / 'index.html').read_text(encoding='utf8')
-    assert 'src="custom.js"' in html
+    assert 'src="custom.js?v=' in html
+    assert 'src="app.js?v=' in html
     assert (site / 'custom.js').is_file()
     assert (site / 'custom_worker.js').is_file()
     assert (site / 'custom_dataset.py').read_text(encoding='utf8') == (ROOT / 'webapp/custom_dataset.py').read_text(encoding='utf8')
