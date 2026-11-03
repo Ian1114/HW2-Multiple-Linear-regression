@@ -1,4 +1,15 @@
-# HW2：WHO 平均餘命多元線性回歸
+# HW2: Multiple Linear regression
+
+| 項目 | 資訊 |
+| --- | --- |
+| 課程名稱 | AIoT 與數據分析（AIoT & Data Analytics, AIoT-DA） |
+| 課堂實作 | HW2: Multiple Linear regression |
+| 授課單元 | AIoT L7 HW 2 Multiple Linear Regression |
+| 示範教師 | Huan Chen |
+| 儲存庫網址 | [Ian1114/HW2-Multiple-Linear-regression](https://github.com/Ian1114/HW2-Multiple-Linear-regression) |
+| Live Demo Page | [線上展示網站](https://ian1114.github.io/HW2-Multiple-Linear-regression/) |
+
+![多元線性回歸作業網站畫面](docs/images/hw_2.png)
 
 姓名：李易軒｜學號：5115056026
 
@@ -8,7 +19,7 @@
 
 1. 用 VS Code 開啟這個資料夾，選擇 `.venv/Scripts/python.exe` 作為 Python 解譯器。
 2. 開啟 `hw2_regression.ipynb`，選同一個 kernel，按「全部執行」。
-3. 結果在 `outputs/`，包括指標、兩種方法的特徵名單、圖、模型和資料雜湊；報告草稿為 `reports/life_expectancy_report.pdf`。
+3. 結果在 `outputs/`，包括指標、兩種方法的特徵名單、圖、模型和資料雜湊；平均餘命報告為 `reports/life_expectancy_report.pdf`。
 
 目前環境為 Windows、Python 3.14.7；相較原設計的 3.11 初始目標已調整。若要重建環境，可安裝 Python 3.14 後執行：
 
@@ -26,11 +37,11 @@ python -m venv .venv
 
 模型檔為 pickle 格式，只載入可信任來源的模型。重新執行 Notebook 會覆寫 outputs 的研究結果。若使用其他工作目錄，請先切換到專案根目錄。
 
-## 結果及尚待完成
+## 結果與限制
 
 主模型為 20 特徵 OLS，國家分組 CV RMSE 4.337 年，保留集 MAE 3.121 年、RMSE 4.063 年、R² 0.823。兩個死亡人數欄位的 VIF 很高，且異質變異與同國觀測相依會影響傳統 OLS 推論與區間。
 
-報告是草稿，仍需核對資料授權、教授最新規範並補上真實 GPT 對話 PDF、實際 NotebookLM 紀錄與至少 100 字摘要。尚未建立學號命名 ZIP；不得將其他資料集當成此次研究資料。原始設計與資料集變更紀錄見 `docs/superpowers/specs/`。
+報告包含 GPT 輔助內容與 NotebookLM 摘要；對話紀錄及完整報告 PDF 位於儲存庫根目錄。原始設計與資料集變更紀錄見 `docs/superpowers/specs/`。提交前仍應核對資料授權與教授最新規範。
 
 ## 本機網站（前後端）
 
